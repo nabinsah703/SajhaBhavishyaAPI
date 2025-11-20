@@ -1,11 +1,12 @@
 ﻿using SajhaBhavishyaAPI.Models.DTOs;
 using SajhaBhavishyaAPI.Models.Entities;
 
-namespace SajhaBhavishyaAPI.Services
+namespace SajhaBhavishyaAPI.Repositories
 {
-    public interface IMemberService
+    public interface IMemberRepository
     {
         Task<int> CreateMemberAsync(MemberCreateDto dto);
-        // you can add other service methods here
+        // you can add other repository methods here
     }
+
 }

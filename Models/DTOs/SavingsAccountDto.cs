@@ -1,8 +1,8 @@
 ﻿namespace SajhaBhavishyaAPI.Models.DTOs
 {
-    public class LoanRequestDto
+    public class SavingsAccountDto
     {
         public int MemberId { get; set; }
-        public decimal Amount { get; set; }
+        public decimal Balance { get; set; }
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace SajhaBhavishyaAPI.Models.Entities
+﻿using System.Transactions;
+
+namespace SajhaBhavishyaAPI.Models.Entities
 {
     public class Member
     {
@@ -10,6 +12,7 @@
         public string? Email { get; set; }
 
         public ICollection<SavingsAccount> SavingsAccounts { get; set; }
+        public ICollection<Transaction> Transactions { get; set; }
         public ICollection<Loan> Loans { get; set; }
     }
 }
