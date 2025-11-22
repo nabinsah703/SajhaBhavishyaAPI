@@ -7,6 +7,7 @@ namespace SajhaBhavishyaAPI.Services
     {
         Task<int> CreateMemberAsync(MemberCreateDto dto);
         Task<List<Member>> GetAllMembersAsync();
+        Task<Member> UpdateMemberAsync(MemberUpdateDTO dto);
         // you can add other service methods here
     }
 }

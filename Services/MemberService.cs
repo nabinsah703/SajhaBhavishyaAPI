@@ -40,5 +40,19 @@ namespace SajhaBhavishyaAPI.Services
             return await sajhaDbContext.Members.Include(x => x.MemberTransactions)
                 .ToListAsync();
         }
+
+        public async Task<Member> UpdateMemberAsync(MemberUpdateDTO dto)
+        {
+            var member = await sajhaDbContext.Members.FindAsync(dto.Id);
+            if (member == null)
+                return null;
+            // update only the fields provided in the DTO 
+            member.FirstName = dto.FirstName;
+            member.LastName = dto.LastName;
+            member.Email = dto.Email;
+            member.Mobile = dto.Mobile;
+            await sajhaDbContext.SaveChangesAsync();
+            return member;
+        }
     }
 }
