@@ -1,6 +1,6 @@
 ﻿namespace SajhaBhavishyaAPI.Models.Entities
 {
-    public class Transaction
+    public class MemberTransaction
     {
         public int Id { get; set; }
         public int MemberId { get; set; } // Foreign key

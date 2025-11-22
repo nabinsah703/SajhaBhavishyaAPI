@@ -15,6 +15,12 @@ namespace SajhaBhavishyaAPI.Controllers
         {
             _service = service;
         }
+        [HttpGet]
+        public async Task<ActionResult<List<Member>>> GetAll()
+        {
+            var members = await _service.GetAllMembersAsync();
+            return Ok(members);
+        }
 
         [HttpPost]
         public async Task<IActionResult> CreateMember(MemberCreateDto dto)

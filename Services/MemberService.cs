@@ -1,17 +1,21 @@
-﻿using SajhaBhavishyaAPI.Models.DTOs;
+﻿using SajhaBhavishyaAPI.Data;
+using SajhaBhavishyaAPI.Models.DTOs;
 using SajhaBhavishyaAPI.Models.Entities;
 using SajhaBhavishyaAPI.Repositories;
-
+using System;
+using Microsoft.EntityFrameworkCore;
 namespace SajhaBhavishyaAPI.Services
 {
 
     public class MemberService : IMemberService
     {
         private readonly IMemberRepository _repository;
+        private readonly SajhaDbContext sajhaDbContext;
 
-        public MemberService(IMemberRepository repository)
+        public MemberService(IMemberRepository repository, SajhaDbContext context)
         {
             _repository = repository;
+            sajhaDbContext = context;
         }
 
         public async Task<int> CreateMemberAsync(MemberCreateDto dto)
@@ -30,9 +34,11 @@ namespace SajhaBhavishyaAPI.Services
             return newMemberId;
         }
 
-        public Task<Member> CreateMemberAsync(Member member)
+        public async Task<List<Member>> GetAllMembersAsync()
         {
-            throw new NotImplementedException();
+            // Fetch all members from SQL Server via EF Core
+            return await sajhaDbContext.Members.Include(x => x.MemberTransactions)
+                .ToListAsync();
         }
     }
 }
